@@ -22,7 +22,7 @@
     "PYTHONDONTWRITEBYTECODE": "true",
     "ROOT_LOG_LEVEL": "INFO",
     "AWS_STORAGE_BUCKET_NAME": "sov-gnosis-config",
-    "DJANGO_SU_NAME": "{username}",
-    "DJANGO_SU_EMAIL": "{email}"
+    "DJANGO_SU_NAME": "sovryn",
+    "DJANGO_SU_EMAIL": "sovryn@sovryn.app"
   }
 }
