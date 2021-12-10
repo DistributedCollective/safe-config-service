@@ -1,0 +1,71 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    app: safe-config-service
+  labels:
+    app: safe-config-service
+  name: safe-config-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: safe-config-service
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      annotations:
+        app: safe-config-service
+      labels:
+        app: safe-config-service
+    spec:
+      containers:
+        - image: gofman2/safe-config
+          envFrom:
+          - secretRef:
+              name: safe-config-service
+          name: web
+          resources: {}
+          tty: true
+          volumeMounts:
+            - mountPath: /nginx
+              name: nginx-shared
+        - image: nginx:1.20-alpine
+          name: nginx
+          envFrom:
+          - secretRef:
+              name: safe-config-service
+          ports:
+            - containerPort: 80
+          resources: {}
+          volumeMounts:
+            - name: nginxconf
+              mountPath: /etc/nginx/templates
+            - mountPath: /nginx
+              name: nginx-shared
+      restartPolicy: Always
+      volumes:
+        - name: nginx-shared
+          emptyDir: {}
+        - name: nginxconf
+          secret:
+            secretName: safe-config-service-nginx
+      imagePullSecrets:
+        - name: regcred
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: safe-config-service
+spec:
+  annotations:
+    service.beta.kubernetes.io/aws-load-balancer-backend-protocol: http
+    service.beta.kubernetes.io/aws-load-balancer-ssl-cert: arn:aws:acm:us-east-2:500674654096:certificate/4d342e91-c855-47ea-9c40-dea361b19d4f
+  selector:
+    app: safe-config-service
+  ports:
+    - port: 443
+      targetPort: 80
+  type: LoadBalancer
+---
