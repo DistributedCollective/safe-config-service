@@ -23,7 +23,6 @@
     "ROOT_LOG_LEVEL": "INFO",
     "AWS_STORAGE_BUCKET_NAME": "sov-gnosis-config",
     "DJANGO_SU_NAME": "{username}",
-    "DJANGO_SU_EMAIL": "{email}",
-    "DJANGO_SU_PASSWORD": "{password}"
+    "DJANGO_SU_EMAIL": "{email}"
   }
 }

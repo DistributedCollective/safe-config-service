@@ -75,7 +75,7 @@ jobs:
         run: |
             cat .github/workflows/ci-properties.json
             for i in `cat .github/workflows/ci-properties.json | jq -r .APP_ENV_VARS | jq -r 'keys[]'`; do params="${params} --from-literal=$i=$(cat .github/workflows/ci-properties.json | jq -r .APP_ENV_VARS.$i)"; done # add envs from ci-properties.json file
-            params="${params} --from-literal=SECRET_KEY=${{ secrets.SECRET_KEY }} --from-literal=POSTGRES_USER=${{ secrets.POSTGRES_USER }} --from-literal=POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }} --from-literal=POSTGRES_HOST=${{ secrets.POSTGRES_HOST }} --from-literal=CGW_FLUSH_TOKEN=${{ secrets.CGW_FLUSH_TOKEN }} --from-literal=AWS_ACCESS_KEY_ID=${{ secrets.APP_AWS_ACCESS_KEY_ID }} --from-literal=AWS_SECRET_ACCESS_KEY=${{ secrets.APP_AWS_SECRET_ACCESS_KEY }} --from-literal=AWS_REGION=${{ inputs.aws_region }}"
+            params="${params} --from-literal=SECRET_KEY=${{ secrets.SECRET_KEY }} --from-literal=POSTGRES_USER=${{ secrets.POSTGRES_USER }} --from-literal=POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }} --from-literal=POSTGRES_HOST=${{ secrets.POSTGRES_HOST }} --from-literal=CGW_FLUSH_TOKEN=${{ secrets.CGW_FLUSH_TOKEN }} --from-literal=AWS_ACCESS_KEY_ID=${{ secrets.APP_AWS_ACCESS_KEY_ID }} --from-literal=AWS_SECRET_ACCESS_KEY=${{ secrets.APP_AWS_SECRET_ACCESS_KEY }} --from-literal=AWS_REGION=${{ inputs.aws_region }} --from-literal=DJANGO_SU_PASSWORD=${{ secrets.DJANGO_SU_PASSWORD }}"
             echo "::set-output name=k8sparams::$params"
             echo "::add-mask::$params"
 
