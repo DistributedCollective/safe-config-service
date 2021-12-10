@@ -8,7 +8,7 @@
   "dev_branch": "development",
   "APP_ENV_VARS": {
     "DJANGO_ALLOWED_HOSTS": "safe-config.sovryn.app",
-    "CGW_URL": "https://safe-config.sovryn.app",
+    "CGW_URL": "https://safe-client.sovryn.app",
     "POSTGRES_NAME": "config-service",
     "POSTGRES_PORT": 5432,
     "DEBUG": "false",
