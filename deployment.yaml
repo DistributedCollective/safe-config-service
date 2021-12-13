@@ -21,7 +21,7 @@ spec:
         app: safe-config-service
     spec:
       containers:
-        - image: gofman2/safe-config
+        - image: sovryn/safe-config
           envFrom:
           - secretRef:
               name: safe-config-service
