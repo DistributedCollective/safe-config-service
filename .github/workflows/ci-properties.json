@@ -6,6 +6,7 @@
   "image_name": "sovryn/safe-config",
   "prod_branch": "rsk",
   "dev_branch": "development",
+  "dockerfile_path": ".",
   "APP_ENV_VARS": {
     "DJANGO_ALLOWED_HOSTS": "safe-config.sovryn.app",
     "CGW_URL": "https://safe-client.sovryn.app",

@@ -25,6 +25,8 @@ spec:
           envFrom:
           - secretRef:
               name: safe-config-service
+          - secretRef:
+              name: safe-config-service-secret
           name: web
           resources: {}
           tty: true
@@ -36,6 +38,8 @@ spec:
           envFrom:
           - secretRef:
               name: safe-config-service
+          - secretRef:
+              name: safe-config-service-secret
           ports:
             - containerPort: 80
           resources: {}
