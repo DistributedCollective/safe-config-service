@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   annotations:
-    app: safe-config-service
+    deployment.kubernetes.io/revision: '1'
   labels:
     app: safe-config-service
   name: safe-config-service
@@ -15,8 +15,6 @@ spec:
     type: Recreate
   template:
     metadata:
-      annotations:
-        app: safe-config-service
       labels:
         app: safe-config-service
     spec:
