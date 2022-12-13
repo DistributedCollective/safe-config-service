@@ -25,5 +25,11 @@
     "AWS_STORAGE_BUCKET_NAME": "sov-gnosis-config",
     "DJANGO_SU_NAME": "sovryn",
     "DJANGO_SU_EMAIL": "sovryn@sovryn.app"
+  },
+  "DEV_ENV_VARS": {
+    "NODE_ENV": "test"
+  },
+  "PROD_ENV_VARS": {
+    "NODE_ENV": "production"
   }
 }
